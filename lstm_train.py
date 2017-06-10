@@ -77,11 +77,11 @@ def lstm_train(dataset, application_id):
     plt.plot(trainPredictPlot)
     plt.plot(testPredictPlot)
 
-    plt.legend(['Real', 'Prediction(Train)', 'Prediction(Test)'], ncol=4, loc='upper center',
-               bbox_to_anchor=[0.5, 1.1],
-               columnspacing=1.0, labelspacing=0.0,
-               handletextpad=0.0, handlelength=1.5,
-               fancybox=True, shadow=True)
+    # plt.legend(['Real', 'Prediction(Train)', 'Prediction(Test)'], ncol=4, loc='upper center',
+    #            bbox_to_anchor=[0.5, 1.1],
+    #            columnspacing=1.0, labelspacing=0.0,
+    #            handletextpad=0.0, handlelength=1.5,
+    #            fancybox=True, shadow=True)
     # plt.show()
     save("lstm_ranking_prediction_result_{}".format(application_id), ext="pdf", close=True, verbose=True)
 
@@ -118,7 +118,7 @@ if __name__ == "__main__":
 
     TIMESTEPS = 10
 
-    test_application_id = 951744068
+    test_application_id = 504575083
 
     # load the dataset
     rawdata = load_data(ranks, test_application_id)
