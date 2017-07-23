@@ -117,20 +117,20 @@ def input_fn(df):
 #                 updates_collections, name or 'rmspe')
 
 
-def rmspe(labels, predictions, weights=None,
+def mape(labels, predictions, weights=None,
                         metrics_collections=None,
                         updates_collections=None,
                         name=None):
-    mean_square_percentage_errors = math_ops.square(math_ops.div(math_ops.subtract(labels, predictions), labels))
-    return mean(mean_square_percentage_errors, weights, metrics_collections,
-                updates_collections, name or 'mspe')
+    absolute_percentage_errors = math_ops.abs(math_ops.div(math_ops.subtract(labels, predictions), labels))
+    return mean(absolute_percentage_errors, weights, metrics_collections,
+                updates_collections, name or 'mape')
 
 
-def streaming_rmspe(predictions, labels, weights=None,
+def streaming_mape(predictions, labels, weights=None,
                                   metrics_collections=None,
                                   updates_collections=None,
                                   name=None):
-    return rmspe(
+    return mape(
         predictions=predictions, labels=labels, weights=weights,
         metrics_collections=metrics_collections,
         updates_collections=updates_collections, name=name)
@@ -139,7 +139,6 @@ def streaming_rmspe(predictions, labels, weights=None,
 def main(unused_argv):
     # Load datasets.
     df_train, df_test = loaddata()
-    train_steps = 200
 
     model_dir = "/home/jc/workspace/adidas_take_home/model_dir/"
     model_dir = tempfile.mkdtemp() if not model_dir else model_dir
@@ -155,9 +154,9 @@ def main(unused_argv):
             tf.contrib.learn.MetricSpec(
                 metric_fn=tf.contrib.metrics.streaming_mean_absolute_error,
             ),
-        "mspe":
+        "mape":
             tf.contrib.learn.MetricSpec(
-                metric_fn=streaming_rmspe,
+                metric_fn=streaming_mape,
             )
     }
 
