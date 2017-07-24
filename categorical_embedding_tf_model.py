@@ -99,5 +99,5 @@ def build_estimator(model_dir, model_type="combined"):
         dnn_feature_columns=deep_columns,
         dnn_hidden_units=[100, 50],
         fix_global_step_increment_bug=True,
-        config=tf.contrib.learn.RunConfig(save_checkpoints_secs=10))
+        config=tf.contrib.learn.RunConfig(keep_checkpoint_max=3, save_checkpoints_secs=100))
     return m

@@ -164,15 +164,15 @@ def main(unused_argv):
         input_fn=lambda: input_fn(df_test),
         eval_steps=1,  # Try adding this
         metrics=validation_metrics,
-        every_n_steps=10,
+        every_n_steps=50,
         early_stopping_metric="loss",
         early_stopping_metric_minimize=True,
-        early_stopping_rounds=10
+        early_stopping_rounds=50
     )
 
     m.fit(
         input_fn=lambda: input_fn(df_train),
-        steps=200,
+        steps=15000,
         monitors=[validation_monitor],
     )
 
