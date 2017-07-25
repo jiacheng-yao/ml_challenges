@@ -98,6 +98,9 @@ def build_estimator(model_dir, model_type="combined"):
         linear_feature_columns=wide_columns,
         dnn_feature_columns=deep_columns,
         dnn_hidden_units=[100, 50],
+        dnn_optimizer=tf.train.ProximalAdagradOptimizer(learning_rate=0.1,
+                                                        l1_regularization_strength=0.001,
+                                                        l2_regularization_strength=0.001),
         fix_global_step_increment_bug=True,
         config=tf.contrib.learn.RunConfig(keep_checkpoint_max=3, save_checkpoints_secs=100))
     return m
