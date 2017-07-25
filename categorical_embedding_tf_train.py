@@ -175,7 +175,7 @@ def main(unused_argv):
 
     m.fit(
         input_fn=lambda: input_fn(df_train),
-        steps=15000,
+        steps=100000,
         monitors=[validation_monitor],
     )
 
