@@ -1,24 +1,38 @@
 import tensorflow as tf
+import pickle
 
 def build_estimator(model_dir, model_type="combined"):
     """Build an estimator."""
     # Sparse base columns.
+
+    with open('list_articles.txt', 'rb') as f:
+        list_articles = pickle.load(f)
+        
+    with open('list_productgroup.txt', 'rb') as f:
+        list_productgroup = pickle.load(f)
+        
+    with open('list_category.txt', 'rb') as f:
+        list_category = pickle.load(f)
+        
+    with open('list_sizes.txt', 'rb') as f:
+        list_sizes = pickle.load(f)
+
     country = tf.contrib.layers.sparse_column_with_keys(column_name="country",
                                                        keys=["Germany", "France", "Austria"])
     promo1 = tf.contrib.layers.sparse_column_with_keys(column_name="promo1",
                                                        keys=["0", "1"])
     promo2 = tf.contrib.layers.sparse_column_with_keys(column_name="promo2",
                                                        keys=["0", "1"])
-    article = tf.contrib.layers.sparse_column_with_hash_bucket(
-        "article", hash_bucket_size=2000)
-    productgroup = tf.contrib.layers.sparse_column_with_hash_bucket(
-        "productgroup", hash_bucket_size=100)
-    category = tf.contrib.layers.sparse_column_with_hash_bucket(
-        "category", hash_bucket_size=1000)
+    article = tf.contrib.layers.sparse_column_with_keys(column_name="article",
+                                                       keys=list_articles)
+    productgroup = tf.contrib.layers.sparse_column_with_keys(column_name="productgroup",
+                                                       keys=list_productgroup)
+    category = tf.contrib.layers.sparse_column_with_keys(column_name="category",
+                                                       keys=list_category)
     style = tf.contrib.layers.sparse_column_with_keys(column_name="style",
                                                        keys=["wide", "slim", "regular"])
-    sizes = tf.contrib.layers.sparse_column_with_hash_bucket(
-        "sizes", hash_bucket_size=100)
+    sizes = tf.contrib.layers.sparse_column_with_keys(column_name="sizes",
+                                                       keys=list_sizes)
     gender = tf.contrib.layers.sparse_column_with_keys(column_name="gender",
                                                        keys=["unisex", "kids", "female", "male"])
 
@@ -97,9 +111,9 @@ def build_estimator(model_dir, model_type="combined"):
         model_dir=model_dir,
         linear_feature_columns=wide_columns,
         dnn_feature_columns=deep_columns,
-        dnn_hidden_units=[100, 50],
+        dnn_hidden_units=[100, 80],
         # dnn_dropout=0.5,
-        dnn_optimizer=tf.train.ProximalAdagradOptimizer(learning_rate=0.1,
+        dnn_optimizer=tf.train.ProximalAdagradOptimizer(learning_rate=0.2,
                                                         l1_regularization_strength=0.001,
                                                         l2_regularization_strength=0.001),
         fix_global_step_increment_bug=True,

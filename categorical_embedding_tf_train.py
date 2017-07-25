@@ -175,7 +175,7 @@ def main(unused_argv):
 
     m.fit(
         input_fn=lambda: input_fn(df_train),
-        steps=50000,
+        steps=5000,
         monitors=[validation_monitor],
     )
 
@@ -186,9 +186,9 @@ def main(unused_argv):
     # Print out predictions
     y = m.predict(input_fn=lambda: input_fn(df_test))
     # .predict() returns an iterator; convert to a list and print predictions
-    # islice(y,6) only the first 6 prediction results
-    predictions = list(itertools.islice(y, 6))
-    real = list(df_test[LABEL_COLUMN])[:6]
+    # islice(y,10) only the first 10 prediction results
+    predictions = list(itertools.islice(y, 10))
+    real = list(df_test[LABEL_COLUMN])[:10]
     print("Predictions: {}".format(str(predictions)))
     print("Real Values: {}".format(str(real)))
 
