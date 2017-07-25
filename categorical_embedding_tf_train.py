@@ -140,6 +140,9 @@ def main(unused_argv):
     # Load datasets.
     df_train, df_test = loaddata()
 
+    df_validation = df_train[df_train['retailweek'] > '2017-02-28']
+    df_train = df_train[df_train['retailweek'] < '2017-02-28']
+
     model_dir = "/home/jc/workspace/adidas_take_home/model_dir/"
     model_dir = tempfile.mkdtemp() if not model_dir else model_dir
 
@@ -161,7 +164,7 @@ def main(unused_argv):
     }
 
     validation_monitor = tf.contrib.learn.monitors.ValidationMonitor(
-        input_fn=lambda: input_fn(df_test),
+        input_fn=lambda: input_fn(df_validation),
         eval_steps=1,  # Try adding this
         metrics=validation_metrics,
         every_n_steps=50,
