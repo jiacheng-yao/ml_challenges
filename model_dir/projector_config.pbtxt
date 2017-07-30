@@ -1,72 +1,80 @@
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/article_embedding/weights"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_article.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_article.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/category_embedding/weights"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_category.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_category.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/sizes_embedding/weights"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_sizes.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_sizes.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/style_embedding/weights"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_style.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_style.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/productgroup_embedding/weights"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_productgroup.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_productgroup.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/promo1_embedding/weights"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_promo1.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_promo1.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/promo2_embedding/weights"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_promo2.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_promo2.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/gender_embedding/weights"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_gender.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_gender.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/country_embedding/weights"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_country.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_country.tsv"
+}
+embeddings {
+  tensor_name: "dnn/input_from_feature_columns/month_embedding/weights"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_month.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/article_embedding/weights/ding/weights/part_0/ProximalAdagrad"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_article.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_article.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/category_embedding/weights/ding/weights/part_0/ProximalAdagrad"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_category.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_category.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/sizes_embedding/weights/ding/weights/part_0/ProximalAdagrad"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_sizes.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_sizes.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/style_embedding/weights/ding/weights/part_0/ProximalAdagrad"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_style.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_style.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/productgroup_embedding/weights/ding/weights/part_0/ProximalAdagrad"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_productgroup.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_productgroup.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/promo1_embedding/weights/ding/weights/part_0/ProximalAdagrad"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_promo1.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_promo1.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/promo2_embedding/weights/ding/weights/part_0/ProximalAdagrad"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_promo2.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_promo2.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/gender_embedding/weights/ding/weights/part_0/ProximalAdagrad"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_gender.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_gender.tsv"
 }
 embeddings {
   tensor_name: "dnn/input_from_feature_columns/country_embedding/weights/ding/weights/part_0/ProximalAdagrad"
-  metadata_path: "/home/jc/workspace/adidas_take_home/model_dir/metadata_country.tsv"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_country.tsv"
+}
+embeddings {
+  tensor_name: "dnn/input_from_feature_columns/month_embedding/weights/ding/weights/part_0/ProximalAdagrad"
+  metadata_path: "/home/jc/workspace/adidas_take_home/tmp_model_dir/metadata_month.tsv"
 }
