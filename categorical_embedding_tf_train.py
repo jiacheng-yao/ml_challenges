@@ -22,9 +22,9 @@ from categorical_embedding_tf_model import build_estimator
 
 LABEL_COLUMN = 'saleslog'
 CATEGORICAL_COLUMNS = ["country", "article", "promo1", "promo2", "productgroup",
-                       "category", "style", "sizes", "gender"]
+                       "category", "style", "sizes", "gender", "month"]
 CONTINUOUS_COLUMNS = ["regular_price", "current_price", "ratio", "cost",
-                      "day", "week", "month", "year", "dayofyear",
+                      "day", "week", "year", "dayofyear",
                       "rgb_r_main_col", "rgb_g_main_col", "rgb_b_main_col",
                       "rgb_r_sec_col", "rgb_g_sec_col", "rgb_b_sec_col"]
 
@@ -48,13 +48,13 @@ def loaddata():
 
     sales['day'] = pd.Index(sales[var_name]).day
     sales['week'] = pd.Index(sales[var_name]).week
-    sales['month'] = pd.Index(sales[var_name]).month
+    sales['month'] = pd.Index(sales[var_name]).strftime("%B")
     sales['year'] = pd.Index(sales[var_name]).year
     sales['dayofyear'] = pd.Index(sales[var_name]).dayofyear
 
     sales['day'] = sales['day'].fillna(0)
     sales['week'] = sales['week'].fillna(0)
-    sales['month'] = sales['month'].fillna(0)
+    # sales['month'] = sales['month'].fillna(0)
     sales['year'] = sales['year'].fillna(0)
     sales['dayofyear'] = sales['dayofyear'].fillna(0)
 
@@ -143,7 +143,7 @@ def main(unused_argv):
     df_validation = df_train[df_train['retailweek'] > '2017-02-28']
     df_train = df_train[df_train['retailweek'] < '2017-02-28']
 
-    model_dir = "/home/jc/workspace/adidas_take_home/model_dir/"
+    model_dir = "/home/jc/workspace/adidas_take_home/model_dir_test/"
     model_dir = tempfile.mkdtemp() if not model_dir else model_dir
 
     m = build_estimator(model_dir)
@@ -175,7 +175,7 @@ def main(unused_argv):
 
     m.fit(
         input_fn=lambda: input_fn(df_train),
-        steps=5000,
+        steps=100,
         monitors=[validation_monitor],
     )
 

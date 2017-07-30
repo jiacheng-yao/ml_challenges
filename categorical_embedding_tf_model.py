@@ -17,10 +17,13 @@ def build_estimator(model_dir, model_type="combined"):
     with open('list_sizes.txt', 'rb') as f:
         list_sizes = pickle.load(f)
 
+    with open('list_month.txt', 'rb') as f:
+        list_month = pickle.load(f)
+
     country = tf.contrib.layers.sparse_column_with_keys(column_name="country",
-                                                       keys=["Germany", "France", "Austria"])
+                                                       keys=['Germany', 'Austria', 'France'])
     promo1 = tf.contrib.layers.sparse_column_with_keys(column_name="promo1",
-                                                       keys=["0", "1"])
+                                                       keys=['1', '0'])
     promo2 = tf.contrib.layers.sparse_column_with_keys(column_name="promo2",
                                                        keys=["0", "1"])
     article = tf.contrib.layers.sparse_column_with_keys(column_name="article",
@@ -30,11 +33,13 @@ def build_estimator(model_dir, model_type="combined"):
     category = tf.contrib.layers.sparse_column_with_keys(column_name="category",
                                                        keys=list_category)
     style = tf.contrib.layers.sparse_column_with_keys(column_name="style",
-                                                       keys=["wide", "slim", "regular"])
+                                                       keys=['wide', 'slim', 'regular'])
     sizes = tf.contrib.layers.sparse_column_with_keys(column_name="sizes",
                                                        keys=list_sizes)
     gender = tf.contrib.layers.sparse_column_with_keys(column_name="gender",
-                                                       keys=["unisex", "kids", "female", "male"])
+                                                       keys=['unisex', 'men', 'kids', 'women'])
+    month = tf.contrib.layers.sparse_column_with_keys(column_name="month",
+                                                       keys=list_month)
 
     # Continuous base columns.
     regular_price = tf.contrib.layers.real_valued_column("regular_price")
@@ -43,7 +48,7 @@ def build_estimator(model_dir, model_type="combined"):
     cost = tf.contrib.layers.real_valued_column("cost")
     day = tf.contrib.layers.real_valued_column("day")
     week = tf.contrib.layers.real_valued_column("week")
-    month = tf.contrib.layers.real_valued_column("month")
+    # month = tf.contrib.layers.real_valued_column("month")
     year = tf.contrib.layers.real_valued_column("year")
     dayofyear = tf.contrib.layers.real_valued_column("dayofyear")
     rgb_r_main_col = tf.contrib.layers.real_valued_column("rgb_r_main_col")
@@ -93,8 +98,9 @@ def build_estimator(model_dir, model_type="combined"):
         tf.contrib.layers.embedding_column(style, dimension=2),
         tf.contrib.layers.embedding_column(sizes, dimension=3),
         tf.contrib.layers.embedding_column(gender, dimension=2),
+        tf.contrib.layers.embedding_column(month, dimension=4),
         regular_price, current_price, ratio, cost,
-        day, week, month, year, dayofyear,
+        day, week, year, dayofyear,
         rgb_r_main_col, rgb_g_main_col, rgb_b_main_col,
         rgb_r_sec_col, rgb_g_sec_col, rgb_b_sec_col
     ]
