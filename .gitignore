@@ -9,3 +9,5 @@
 *.xlsx
 *.xlsx#
 *.png
+dkb/.ipynb_checkpoints/*
+revolut/.ipynb_checkpoints/*
